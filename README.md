@@ -193,3 +193,5 @@ __Проверить нет ли ошибок при разбиении__
 
 Склонировать данный репозиторий, войти в папку ```DZ-otus-25/```, и поднять vagrant-стенд по команде ```vagrant up```.
 ![image](https://github.com/Rafael-99-spec/DZ-otus-25/blob/master/Scheme.PNG)
+
+### Схема сети
