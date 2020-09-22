@@ -59,7 +59,7 @@ MACHINES = {
   :office2Server => {
     :box_name => "centos/7",
     :net => [
-               {ip: '192.168.1.2', adapter: 2, netmask: "255.255.255.192", virtualbox__intnet: "dev-2-net"}
+               {ip: '192.168.1.2', adapter: 2, netmask: "255.255.255.128", virtualbox__intnet: "dev-2-net"}
             ]
   }
 }
@@ -100,8 +100,8 @@ Vagrant.configure("2") do |config|
             sudo bash -c 'echo "net.ipv4.conf.all.forwarding=1" >> /etc/sysctl.conf'; sudo sysctl -p
             echo "DEFROUTE=no" >> /etc/sysconfig/network-scripts/ifcfg-eth0 
             sudo nmcli connection modify "System eth1" +ipv4.addresses "192.168.201.1/30"; sudo nmcli connection modify "System eth1" +ipv4.addresses "192.168.101.1/30"
-            sudo bash -c 'echo "192.168.2.0/24 via 192.168.201.2 dev eth1" > /etc/sysconfig/network-scripts/route-eth1'
-            sudo bash -c 'echo "192.168.1.0/24 via 192.168.101.2 dev eth1" >> /etc/sysconfig/network-scripts/route-eth1'
+            sudo bash -c 'echo "192.168.2.0/26 via 192.168.201.2 dev eth1" > /etc/sysconfig/network-scripts/route-eth1'
+            sudo bash -c 'echo "192.168.1.0/25 via 192.168.101.2 dev eth1" >> /etc/sysconfig/network-scripts/route-eth1'
             echo "GATEWAY=192.168.255.1" >> /etc/sysconfig/network-scripts/ifcfg-eth1
             sudo systemctl restart network
             sudo reboot
